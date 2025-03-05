@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class LoginTextFormField extends StatelessWidget {
   final FocusNode focusNode;
   final String iconPath, initialValue, hintText, labelText;
-  final FormFieldValidator<String> validator;
+  final String? Function(String?) validator;
   final void Function(String) onFieldSubmitted;
   final bool obscureText;
 

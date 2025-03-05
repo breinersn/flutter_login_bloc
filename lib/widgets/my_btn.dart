@@ -16,16 +16,6 @@ class MyBtn extends StatelessWidget {
       required this.backgroundColor,
       required this.padding,
       required this.textColor});
-  // const MyBtn(
-  //     {Key key,
-  //     required this.label,
-  //     required this.onPressed,
-  //     required this.backgroundColor,
-  //     required this.textColor,
-  //     required this.padding,
-  //     this.fullWidth = false})
-  //     : assert(label != null),
-  //       super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +24,7 @@ class MyBtn extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: Container(
         width: fullWidth ? double.infinity : null,
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
         decoration: BoxDecoration(
             color: backgroundColor ?? Colors.white,
             borderRadius: BorderRadius.circular(30),
@@ -43,7 +33,7 @@ class MyBtn extends StatelessWidget {
                   color: Colors.black38, blurRadius: 10, offset: Offset(0, 5))
             ]),
         child: Text(
-          this.label,
+          label,
           textAlign: TextAlign.center,
           style: TextStyle(
               color: textColor ?? Colors.black,

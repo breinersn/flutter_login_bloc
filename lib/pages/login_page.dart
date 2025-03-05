@@ -15,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   LoginBloc _loginBloc = LoginBloc();
 
   FocusNode _focusNodePassword = FocusNode();
+  FocusNode _focusNodeEmail = FocusNode();
 
   GlobalKey<FormState> _formKey = GlobalKey();
 
@@ -35,16 +36,16 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  _validateEmail(String email) {
-    if (email.isNotEmpty && email.contains("@")) {
+  String? _validateEmail(String? email) {
+    if (email != null && email.isNotEmpty && email.contains("@")) {
       _email = email;
       return null;
     }
     return "invalid email";
   }
 
-  String _validatePassword(String password) {
-    if (password.isNotEmpty && password.length > 4) {
+  String? _validatePassword(String? password) {
+    if (password != null && password.isNotEmpty && password.length > 4) {
       _password = password;
       return null;
     }
@@ -106,11 +107,9 @@ class _LoginPageState extends State<LoginPage> {
                                   onFieldSubmitted: (String text) {
                                     _focusNodePassword.nextFocus();
                                   },
-                                  validator: (value) => value.isEmpty
-                                      ? 'Email cannot be blank'
-                                      : null,
-                                  focusNode: null,
-                                  obscureText: null,
+                                  validator: _validateEmail,
+                                  focusNode: _focusNodeEmail,
+                                  obscureText: true,
                                 ),
                                 SizedBox(height: 20),
                                 LoginTextFormField(
@@ -160,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                                   onPressed: _submit,
                                   backgroundColor: Color(0xff304FFE),
                                   textColor: Colors.white,
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 0, vertical: 0),
                                 ),
                                 const SizedBox(height: 35),
@@ -175,8 +174,8 @@ class _LoginPageState extends State<LoginPage> {
                                         onPressed: () {},
                                         backgroundColor: Color(0xff0D47A1),
                                         textColor: Colors.white,
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 0, vertical: 18),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 0, vertical: 16),
                                       ),
                                     ),
                                     const SizedBox(width: 10),
@@ -186,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                                       label: "GOOGLE",
                                       onPressed: () {},
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 0, vertical: 18),
+                                          horizontal: 0, vertical: 16),
                                       backgroundColor: Color(0xffF50057),
                                       textColor: Colors.white,
                                     )),
@@ -210,7 +209,7 @@ class _LoginPageState extends State<LoginPage> {
                     return Positioned.fill(
                         child: Container(
                       color: Colors.white70,
-                      child: Center(
+                      child: const Center(
                         child: CupertinoActivityIndicator(
                           radius: 15,
                         ),
@@ -219,7 +218,7 @@ class _LoginPageState extends State<LoginPage> {
                   }
                   return Container();
                 },
-                condition: (prevState, newState) =>
+                buildWhen: (prevState, newState) =>
                     prevState.fetching != newState.fetching,
               )
             ],
