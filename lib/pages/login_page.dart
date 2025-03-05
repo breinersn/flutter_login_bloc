@@ -79,11 +79,11 @@ class _LoginPageState extends State<LoginPage> {
                           children: <Widget>[
                             Padding(
                               padding: EdgeInsets.only(top: 60, bottom: 10),
-                              child: Image.network(
-                                'https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo4.png',
-                                width: 280,
-                                color: Color(0xff304FFE),
-                              ),
+                              // child: Image.network(
+                              //   'https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo4.png',
+                              //   width: 280,
+                              //   color: Color(0xff304FFE),
+                              // ),
                             ),
                             const Text(
                               "Flutter UI & UX",
