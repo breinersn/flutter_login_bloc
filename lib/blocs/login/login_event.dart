@@ -1,6 +1,6 @@
 part of 'login_bloc.dart';
 
-sealed class LoginEvent extends Equatable {
+abstract class LoginEvent extends Equatable {
   const LoginEvent();
 
   @override
@@ -17,3 +17,7 @@ class LoginByPassword extends LoginEvent {
   @override
   List<Object> get props => [context, email, password];
 }
+
+class LoginByGoogle extends LoginEvent {}
+
+class LoginByFacebook extends LoginEvent {}

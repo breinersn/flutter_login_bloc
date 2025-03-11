@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_login_bloc/blocs/login/login_bloc.dart';
 import 'package:flutter_login_bloc/widgets/login_text_form_field.dart';
 import 'package:flutter_login_bloc/widgets/my_btn.dart';
+import '../blocs/bloc.dart';
 
 class LoginPage extends StatefulWidget {
   static final routeName = 'login';
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                           children: <Widget>[
                             Padding(
                               padding:
-                                  const EdgeInsets.only(top: 30, bottom: 10),
+                                  const EdgeInsets.only(top: 60, bottom: 10),
                               child: Image.asset(
                                 'assets/images/logo.png',
                                 width: 200,

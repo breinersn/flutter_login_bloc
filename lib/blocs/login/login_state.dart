@@ -15,7 +15,7 @@ class LoginState extends Equatable {
   }
 }
 
-final class LoginInitial extends LoginState {}
+// final class LoginInitial extends LoginState {}
 
 
 // final class LoginLoading extends LoginState {}

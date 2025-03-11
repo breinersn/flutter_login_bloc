@@ -39,6 +39,13 @@ dependencies:
   flutter_bloc: ^9.1.0
   equatable: ^2.0.7
   flutter_svg: ^2.0.17
+  shared_preferences: ^2.5.2
+  shimmer: ^3.0.0
+  cached_network_image: ^3.4.1
+  youtube_player_flutter: ^9.1.1
+  share_plus: ^10.1.4 
+  image_picker: ^1.1.2
+  after_layout: ^1.2.0
 
 dev_dependencies:
   flutter_test:
