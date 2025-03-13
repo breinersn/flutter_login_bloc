@@ -26,7 +26,7 @@ class _AvatarState extends State<Avatar> {
       });
     }
     setState(() {
-      _file = file as File?;
+      _file = File(file!.path);
     });
   }
 

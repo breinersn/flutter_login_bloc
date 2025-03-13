@@ -8,8 +8,8 @@ import 'package:flutter_login_bloc/pages/play_list_videos_page.dart';
 class TopPlayLists extends StatefulWidget {
   final List<PlayList> items;
 
-  const TopPlayLists({required this.items})
-      : assert(items != null && items.length > 0);
+  const TopPlayLists({required List<PlayList>? items})
+      : items = items ?? const [];
   @override
   _TopPlayListsState createState() => _TopPlayListsState();
 }
