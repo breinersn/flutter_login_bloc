@@ -12,7 +12,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  LoginBloc _loginBloc = LoginBloc();
+  final LoginBloc _loginBloc = LoginBloc();
 
   FocusNode _focusNodePassword = FocusNode();
   FocusNode _focusNodeEmail = FocusNode();

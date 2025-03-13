@@ -15,9 +15,9 @@ class TopPlayLists extends StatefulWidget {
 }
 
 class _TopPlayListsState extends State<TopPlayLists> {
-  PageController _controller =
+  final PageController _controller =
       PageController(initialPage: 0, viewportFraction: 0.5);
-  ValueNotifier<int> _currentPage = ValueNotifier<int>(0);
+  final ValueNotifier<int> _currentPage = ValueNotifier<int>(0);
 
   @override
   void initState() {

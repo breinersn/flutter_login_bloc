@@ -58,7 +58,7 @@ class MoreTab extends StatelessWidget {
                   ),
                   Text("Bienvenido"),
                   Text(
-                    "Darwin Morocho",
+                    "Breiner suarez",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -67,7 +67,7 @@ class MoreTab extends StatelessWidget {
             LeftRightIconButton(
               leftIcon: 'assets/icons/email.svg',
               rightContent: const Text(
-                "darwin@test.com",
+                "Breiner@test.com",
                 style: TextStyle(color: Color(0xffaaaaaa)),
               ),
               label: 'Email',

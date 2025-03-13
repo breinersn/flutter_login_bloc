@@ -5,7 +5,7 @@ class AccountAPI {
   Future<bool> login(String email, String password) async {
     try {
       final http.Response response = await http.post(
-          "https://reqres.in/api/login" as Uri,
+          Uri.parse("https://reqres.in/api/login"),
           body: jsonEncode({"email": email, "password": password, "age": 25}),
           headers: {'Content-Type': 'application/json'});
 
@@ -24,7 +24,7 @@ class AccountAPI {
   Future<List<dynamic>> getUsers(int page) async {
     try {
       final http.Response response = await http
-          .get("https://reqres.in/api/users?page=$page&delay=3" as Uri);
+          .get(Uri.parse("https://reqres.in/api/users?page=$page&delay=3"));
 
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);

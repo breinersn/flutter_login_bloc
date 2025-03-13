@@ -31,9 +31,9 @@ class MyAppbar extends StatelessWidget {
               width: 30,
             ),
           ),
-          Image.network(
-            'https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo4.png',
-            width: 170,
+          Image.asset(
+            'assets/images/logo.png',
+            width: 150,
             color: Colors.black,
           ),
           CupertinoButton(

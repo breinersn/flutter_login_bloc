@@ -4,12 +4,14 @@ class LoginState extends Equatable {
   final bool fetching;
   final int intents;
 
+  LoginState initialState() => LoginState();
+
   const LoginState({this.fetching = false, this.intents = 0});
 
   @override
   List<Object> get props => [fetching, intents];
 
-  LoginState copywith({bool? fetching, int? intents}) {
+  LoginState copyWith({bool? fetching, int? intents}) {
     return LoginState(
         fetching: fetching ?? this.fetching, intents: intents ?? this.intents);
   }

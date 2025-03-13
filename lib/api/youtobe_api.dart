@@ -30,6 +30,8 @@ class YouTubeAPI {
 
       final response = await http.get(url as Uri);
 
+      print("response play list ${response.body}");
+
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);
         final List<PlayList> items = (parsed['items'] as List)
@@ -52,9 +54,11 @@ class YouTubeAPI {
         "key": this.apiKey,
         "maxResults": "20"
       });
-      print("url $url");
+      // print("url $url");
 
       final response = await http.get(url as Uri);
+
+      print("response new video ${response.body}");
 
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);

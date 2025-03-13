@@ -77,14 +77,14 @@ class _HomePageState extends State<HomePage> {
                 onRightClick: () {
                   final route = MaterialPageRoute(
                       builder: (BuildContext _) => ChatPage(
-                            username: "Darwin Morocho",
+                            username: "Breiner suarez",
                           ));
                   Navigator.push(context, route);
                 },
                 onLeftClick: () {
                   Navigator.pushNamed(context, ImagesPage.routeName,
                       arguments:
-                          ImagesPageArgs(username: "Darwin", isActive: true));
+                          ImagesPageArgs(username: "Breiner", isActive: true));
                 },
               ),
 

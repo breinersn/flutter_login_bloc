@@ -6,25 +6,36 @@ part 'master_event.dart';
 part 'master_state.dart';
 
 class MasterBloc extends Bloc<MasterEvent, MasterState> {
-  MasterBloc(super.initialState);
+  MasterBloc() : super(MasterState(currentTab: 0, history: [], favorites: [])) {
+    on<MasterSetTab>(_onSetTab);
+  }
 
-  MasterState get initialState => MasterState.initialState();
+  // MasterState get initialState => MasterState.initialState();
 
-  Stream<MasterState> mapEventToState(MasterEvent event) async* {
+  mapEventToState(MasterEvent event, Emitter<MasterState> emit) async {
     if (event is MasterSetTab) {
-      yield state.copyWith(currentTab: event.tab);
+      _onSetTab(event, emit);
+      emit(state.copyWith(currentTab: event.tab));
     } else if (event is MasterAddToHistory) {
-      yield* _addToHistory(event);
+      on<MasterAddToHistory>(_addToHistory(event));
+      emit(_addToHistory(event));
     } else if (event is MasterRemoveFromHistory) {
-      yield* _removeFromHistory(event);
+      on<MasterRemoveFromHistory>(_removeFromHistory(event));
+      on<MasterLogOut>(_removeFromHistory(event));
+      emit(_removeFromHistory(event));
     } else if (event is MasterLogOut) {
-      yield state.copyWith(history: [], currentTab: 0);
+      emit(state.copyWith(history: [], currentTab: 0));
     } else if (event is MasterAddToFavorites) {
-      yield* _addToFavorites(event);
+      on<MasterAddToFavorites>(_addToFavorites(event));
+      emit(_addToFavorites(event));
     }
   }
 
-  Stream<MasterState> _addToHistory(MasterAddToHistory event) async* {
+  void _onSetTab(MasterSetTab event, Emitter<MasterState> emit) {
+    emit(state.copyWith(currentTab: event.tab));
+  }
+
+  _addToHistory(MasterAddToHistory event) async {
     final int index = state.history
         .indexWhere((item) => item.videoId == event.youTubeVideo.videoId);
 
@@ -32,11 +43,11 @@ class MasterBloc extends Bloc<MasterEvent, MasterState> {
       // event.youTubeVideo
       final history = List<YouTubeVideo>.from(this.state.history);
       history.add(event.youTubeVideo);
-      yield this.state.copyWith(history: history);
+      state.copyWith(history: history);
     }
   }
 
-  Stream<MasterState> _addToFavorites(MasterAddToFavorites event) async* {
+  _addToFavorites(MasterAddToFavorites event) async {
     final int index = state.favorites
         .indexWhere((item) => item.videoId == event.youTubeVideo.videoId);
 
@@ -44,13 +55,13 @@ class MasterBloc extends Bloc<MasterEvent, MasterState> {
       // event.youTubeVideo
       final favorites = List<YouTubeVideo>.from(state.favorites);
       favorites.add(event.youTubeVideo);
-      yield state.copyWith(favorites: favorites);
+      state.copyWith(favorites: favorites);
     }
   }
 
-  Stream<MasterState> _removeFromHistory(MasterRemoveFromHistory event) async* {
+  _removeFromHistory(MasterRemoveFromHistory event) async {
     final history = List<YouTubeVideo>.from(state.history);
     history.removeAt(event.index);
-    yield state.copyWith(history: history);
+    state.copyWith(history: history);
   }
 }
