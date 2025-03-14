@@ -14,7 +14,12 @@ class YouTubeVideo {
         snippet['thumbnails']['standard'] ?? snippet['thumbnails']['high'];
     String videoId;
     if (!fromPlayList) {
-      videoId = json['contentDetails']['upload']['videoId'];
+      try {
+        videoId = json['contentDetails']['upload']['videoId'];
+      } catch (e) {
+        videoId =
+            json['contentDetails']['playlistItem']['resourceId']['videoId'];
+      }
     } else {
       videoId = snippet['resourceId']['videoId'];
     }

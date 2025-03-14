@@ -28,9 +28,9 @@ class YouTubeAPI {
         "maxResults": "20"
       });
 
-      final response = await http.get(url as Uri);
+      final response = await http.get(Uri.parse(url));
 
-      print("response play list ${response.body}");
+      // print("response play list ${response.body}");
 
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);
@@ -56,9 +56,9 @@ class YouTubeAPI {
       });
       // print("url $url");
 
-      final response = await http.get(url as Uri);
+      final response = await http.get(Uri.parse(url));
 
-      print("response new video ${response.body}");
+      // print("response new video ${response.body}");
 
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);
@@ -82,9 +82,9 @@ class YouTubeAPI {
         "key": this.apiKey,
         "maxResults": "50"
       });
-      print("url $url");
+      // print("url $url");
 
-      final response = await http.get(url as Uri);
+      final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);

@@ -16,7 +16,7 @@ class PlayListVideosPage extends StatefulWidget {
 class _PlayListVideosPageState extends State<PlayListVideosPage> {
   List<YouTubeVideo> _videos = [];
   bool _loading = true;
-  YouTubeAPI _youTubeAPI =
+  final YouTubeAPI _youTubeAPI =
       YouTubeAPI(apiKey: "AIzaSyAUOpSlooSVnbdHiZ5bDvg9LE-B5lEstGE");
 
   @override

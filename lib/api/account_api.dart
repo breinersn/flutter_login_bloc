@@ -28,8 +28,8 @@ class AccountAPI {
 
       if (response.statusCode == 200) {
         final parsed = jsonDecode(response.body);
-        print("getUsers ok");
-        print(parsed['data'].runtimeType);
+        // print("getUsers ok");
+        // print(parsed['data'].runtimeType);
         return parsed['data'];
       }
       print("error ${response.statusCode} ");

@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                 rightIcon: 'assets/icons/chat.svg',
                 onRightClick: () {
                   final route = MaterialPageRoute(
-                      builder: (BuildContext _) => ChatPage(
+                      builder: (BuildContext _) => const ChatPage(
                             username: "Breiner suarez",
                           ));
                   Navigator.push(context, route);
@@ -92,9 +92,9 @@ class _HomePageState extends State<HomePage> {
                 child: BlocBuilder<MasterBloc, MasterState>(
                     builder: (_, state) {
                       return MyPageView(
+                        currentPage: state.currentTab,
                         children:
                             _menu.map<Widget>((item) => item.content).toList(),
-                        currentPage: state.currentTab,
                       );
                     },
                     buildWhen: (prevState, newState) =>
